@@ -1,0 +1,13 @@
+[project]
+name = "k1-description"
+version = "0.1.0"
+description = "K1 URDF / MJCF / USD description (ROS 2 package); meshes come from the booster_assets submodule."
+requires-python = ">=3.10"
+dependencies = [
+]
+
+[tool.uv]
+package = false  # scripts / ROS packages, not an importable library
+
+# Provided by the environment (ROS 2, Isaac Sim/Lab, mjlab, robot SDK) or not on PyPI under this name:
+# ament_index_python, launch, launch_ros
