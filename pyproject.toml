@@ -1,13 +1,19 @@
 [project]
 name = "k1-description"
-version = "0.1.0"
-description = "K1 URDF / MJCF / USD description (ROS 2 package); meshes come from the booster_assets submodule."
+version = "0.2.0"
+description = "K1 URDF / MJCF / USD description (ROS 2 package + path resolver); meshes come from the booster_assets submodule."
 requires-python = ">=3.10"
-dependencies = [
-]
+dependencies = []
 
-[tool.uv]
-package = false  # scripts / ROS packages, not an importable library
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-# Provided by the environment (ROS 2, Isaac Sim/Lab, mjlab, robot SDK) or not on PyPI under this name:
+[tool.hatch.build.targets.wheel]
+packages = ["src/k1_description"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"assets/robots/K1" = "k1_description/assets/robots/K1"
+
+# Provided by the environment (ROS 2) for the launch files:
 # ament_index_python, launch, launch_ros
