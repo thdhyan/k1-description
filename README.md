@@ -6,8 +6,20 @@ K1 URDF / MJCF / USD description (ROS 2 package); meshes come from the booster_a
 |---|---|
 | Layer | **L0**: Contract (no heavy deps) |
 | May import | nothing |
-| Files / LOC | 9 files · 141 lines (py, sh, cpp) |
+| Files / LOC | 8 files · 141 lines (py, sh, cpp) |
 | Part of | [k1-workspace](https://github.com/thdhyan/k1-workspace) (architecture and layering rules live there) |
+
+## Where it sits
+
+```mermaid
+flowchart TB
+  k1_description((k1-description))
+  style k1_description fill:#e8833a,color:#000
+```
+
+Used by: nothing (top layer).
+
+![k1-workspace layers](https://raw.githubusercontent.com/thdhyan/k1-workspace/main/docs/img/architecture.png)
 
 ## Install
 
