@@ -16,7 +16,8 @@ import re
 from pathlib import Path
 
 __all__ = ["assets_dir", "robot_file", "robot_description",
-           "URDF", "URDF_ZED", "MJCF", "MJCF_MJLAB", "MJCF_MJLAB_ARMS"]
+           "URDF", "URDF_ZED", "MJCF", "MJCF_MJLAB", "MJCF_MJLAB_ARMS",
+           "USD_MJLAB", "USD_MJLAB_ARMS", "USD_MJLAB_SOLID"]
 
 # Canonical file names under robots/K1/.
 URDF = "K1_22dof.urdf"
@@ -24,6 +25,10 @@ URDF_ZED = "K1_22dof-ZED.urdf"
 MJCF = "K1_22dof.xml"
 MJCF_MJLAB = "K1_22dof_mjlab.xml"
 MJCF_MJLAB_ARMS = "K1_22dof_mjlab_arms.xml"
+# Isaac Lab conversions of the mjlab MJCFs (soft-gain K1 for the Isaac tasks).
+USD_MJLAB = "usd_mjlab/K1_22dof_mjlab/K1_22dof_mjlab.usda"
+USD_MJLAB_ARMS = "usd_mjlab/K1_22dof_mjlab_arms/K1_22dof_mjlab_arms.usda"
+USD_MJLAB_SOLID = "usd_mjlab/K1_22dof_mjlab_solid/K1_22dof_mjlab_solid/K1_22dof_mjlab_solid.usda"
 
 _PKG = Path(__file__).resolve().parent
 

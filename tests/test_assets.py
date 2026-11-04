@@ -41,3 +41,22 @@ def test_mjcf_loads(name):
     mujoco = pytest.importorskip("mujoco")
     m = mujoco.MjModel.from_xml_path(str(d.robot_file(name)))
     assert m.nu == N_JOINTS
+
+
+@pytest.mark.parametrize("name", [d.USD_MJLAB, d.USD_MJLAB_ARMS,
+                                  d.USD_MJLAB_SOLID])
+def test_usd_mjlab_payloads_resolve(name):
+    # Isaac is not needed: every relative @...@ asset path in the layer stack must exist.
+    import re
+    root = d.robot_file(name)
+    todo, seen = [root], set()
+    while todo:
+        layer = todo.pop()
+        if layer in seen or layer.suffix != ".usda":
+            continue
+        seen.add(layer)
+        for ref in re.findall(r"@(\./[^@]+)@", layer.read_text()):
+            dep = (layer.parent / ref).resolve()
+            assert dep.exists(), f"{layer.name} -> {ref} missing"
+            todo.append(dep)
+    assert len(seen) > 1, f"{root.name} references no payloads"
